@@ -71,4 +71,16 @@ difference() {
 	}
 	translate ([w/2-4-8.5,h/2-2-5.5,0]) aquarishape(17,11,thickness,1);
 	translate ([w/2-thickness,h/2-70,thickness]) cube([2*thickness,45,1.5*d]);
+	translate ([0,-10,0]){
+		difference() {
+			union() {
+				cylinder(h=thickness,r=15,$fn=6);
+				for(ra=[0:60:360]){
+					rotate(ra,[0,0,1]) translate ([0,30,0]) cylinder(h=thickness,r=15,$fn=6);
+				}
+			}
+			translate ([w/2-thickness,-h/2,0]) cube([10,h,10]);
+			translate ([-w/2-10+thickness,-h/2,0]) cube([10,h,10]);
+		}
+	}
 }
