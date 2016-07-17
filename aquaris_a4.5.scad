@@ -43,9 +43,9 @@ module aquarishape(width,height,depth,rounding){
 }
 
 // Case:
-tolerance = 1.2;
-thickness = 2;
-clip = 0.6;
+tolerance = 0.6;
+thickness = 2.4;
+clip = 1;
 
 difference() {
 	union() {
@@ -70,7 +70,7 @@ difference() {
 		aquarishape(w - 2*r,2*d,1.2*h,r);
 	}
 	translate ([w/2-4-8.5,h/2-2-5.5,0]) aquarishape(17,11,thickness,1);
-	translate ([w/2-thickness,h/2-70,thickness]) cube([2*thickness,45,1.5*d]);
+	translate ([w/2-tolerance/2-clip/2,h/2-70,0]) cube([2*thickness,45,1.5*d]);
 	translate ([0,-10,0]){
 		difference() {
 			union() {
