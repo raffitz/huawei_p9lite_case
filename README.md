@@ -1,3 +1,3 @@
-# bq Aquaris A4.5 mockup
+# bq Aquaris A4.5 Case
 
-Mockup to be used in the development of a case
+A case for the bq Aquaris A4.5 smartphone, made in OpenSCAD
