@@ -45,7 +45,7 @@ module aquarishape(width,height,depth,rounding){
 // Case:
 tolerance = 0.6;
 thickness = 2.4;
-clip = 1;
+clip = 1.6;
 
 difference() {
 	union() {
