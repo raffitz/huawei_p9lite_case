@@ -1,3 +1,3 @@
-# bq Aquaris A4.5 Case
+# Huawei P9 Lite Case
 
-A case for the bq Aquaris A4.5 smartphone, made in OpenSCAD
+A case for the Huawei P9 Lite smartphone, made in OpenSCAD
