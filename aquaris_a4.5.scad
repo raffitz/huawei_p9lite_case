@@ -5,7 +5,7 @@
 // bq provided dimensions:
 w = 63.48;
 h = 131.77;
-d = 8.75;
+d = 9.25;
 
 // Measured/estimated dimensions:
 r = 5.5;
@@ -79,8 +79,8 @@ difference() {
 					rotate(ra,[0,0,1]) translate ([0,30,0]) cylinder(h=thickness,r=15,$fn=6);
 				}
 			}
-			translate ([w/2-thickness,-h/2,0]) cube([10,h,10]);
-			translate ([-w/2-10+thickness,-h/2,0]) cube([10,h,10]);
+			translate ([w/2-3*thickness,-h/2,0]) cube([10,h,10]);
+			translate ([-w/2-10+3*thickness,-h/2,0]) cube([10,h,10]);
 		}
 	}
 }
