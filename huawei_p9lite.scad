@@ -3,12 +3,12 @@
  */
 
 // Huawei provided dimensions:
-w = 63.48;
-h = 131.77;
-d = 9.25;
+w = 72.6;
+h = 146.8;
+d = 7.5;
 
 // Measured/estimated dimensions:
-r = 5.5;
+r = 5;
 
 module pnineshape(width,height,depth,rounding){
 	// Intermediate variables:
