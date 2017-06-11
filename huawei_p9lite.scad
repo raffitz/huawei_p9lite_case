@@ -66,10 +66,10 @@ difference() {
 			d + tolerance + thickness,
 			r - clip/ 2);
 	}
-	translate ([0,-h/2-tolerance - thickness,d+thickness]) rotate(-90,[1,0,0]){
+	translate ([0,-h-tolerance - thickness,d+thickness]) rotate(-90,[1,0,0]){
 		pnineshape(w - 2*r,2*d,1.2*h,r);
 	}
-	translate ([w/2-4-8.5,h/2-2-5.5,0]) pnineshape(17,11,thickness,1);
+	translate ([0,h/2,0]) pnineshape(w-2*thickness,30,2*d,r);
 	translate ([w/2-tolerance/2-clip/2,h/2-70,0]) cube([2*thickness,45,1.5*d]);
 	translate ([0,10,0]){
 		difference() {
