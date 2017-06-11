@@ -76,9 +76,7 @@ difference() {
 			union() {
 				cylinder(h=thickness,r=15,$fn=6);
 				for(ra=[0:60:360]){
-					rotate(ra,[0,0,1]) for(rdist=[30:30:60]){
-						translate ([0,rdist,0]) cylinder(h=thickness,r=15,$fn=6);
-					}
+					rotate(ra,[0,0,1]) translate ([0,30,0]) cylinder(h=thickness,r=15,$fn=6);
 				}
 			}
 			translate ([w/2-3*thickness,-h/2,0]) cube([10,h,10]);
