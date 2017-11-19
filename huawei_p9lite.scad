@@ -66,7 +66,7 @@ module roundedziggurat(width,height,depth,rounding,inset){
 				[0,4,7,3],	// South face
 				[1,5,4,0],	// West face
 				[3,7,6,2]],	// East face
-			convexity = 2);
+			convexity = 10);
 
 		// Middle trapezoidal prism:
 		polyhedron(
@@ -86,7 +86,7 @@ module roundedziggurat(width,height,depth,rounding,inset){
 				[0,4,7,3],	// South face
 				[1,5,4,0],	// West face
 				[3,7,6,2]],	// East face
-			convexity = 2);
+			convexity = 10);
 
 		// Top trapezoidal prism:
 		polyhedron(
@@ -106,7 +106,7 @@ module roundedziggurat(width,height,depth,rounding,inset){
 				[0,4,7,3],	// South face
 				[1,5,4,0],	// West face
 				[3,7,6,2]],	// East face
-			convexity = 2);
+			convexity = 10);
 
 		// Rounded corners (cone trunks):
 		for(i=[-1,1]){
@@ -132,40 +132,60 @@ tolerance = 0.6;
 thickness = 2.4;
 clip = 1.6;
 
+// Inset:
+insetheight = 1.5;
+insetammount = 1;
+
 difference() {
 	union() {
 		// Main case
-		roundedppiped(w + tolerance + thickness,
+		pnineshape(w + tolerance + thickness,
 			h + tolerance + thickness,
 			d + tolerance + thickness,
-			r + (tolerance + thickness)/2);
+			r + (tolerance + thickness)/2,
+			insetheight,
+			insetammount);
 	}
 	// Case cavities
 	translate([0,0,thickness/2]){
-		roundedppiped(w + tolerance,
+		pnineshape(w + tolerance,
 			h + tolerance,
 			d + tolerance,
-			r + tolerance/2);
-		roundedppiped(w - clip,
-			h - clip,
-			d + tolerance + thickness,
+			r + tolerance/2,
+			insetheight,
+			insetammount);
+		roundedppiped(w - insetammount - clip,
+			h - insetammount - clip,
+			d + tolerance + 2*thickness,
 			r - clip/ 2);
 	}
+	// Charging port and speaker hole
 	translate ([0,-h-tolerance - thickness,d+thickness]) rotate(-90,[1,0,0]){
-		roundedppiped(w - 2*r,2*d,1.2*h,r);
+		roundedppiped(50,2*d,0.6*h,r);
 	}
-	translate ([0,h/2,0]) roundedppiped(w-2*thickness,30,2*d,r);
-	translate ([w/2-tolerance/2-clip/2,h/2-70,0]) cube([2*thickness,45,1.5*d]);
+	// Audio Jack hole
+	translate ([0,0,d+thickness]) rotate(-90,[1,0,0]){
+		roundedppiped(35,2*d,0.6*h,r);
+	}
+	// Camera hole
+	translate ([22,66,-1]) roundedppiped(17.5,10,thickness+2,1);
+	// Volume and Lock Button hole
+	translate ([w/2-tolerance/2-clip/2-insetammount,h/2-70,-1]) cube([2*thickness,43,1.5*d]);
+	// Decorative holes
 	translate ([0,10,0]){
-		difference() {
+		intersection() {
 			union() {
-				cylinder(h=thickness,r=15,$fn=6);
-				for(ra=[0:60:360]){
-					rotate(ra,[0,0,1]) translate ([0,30,0]) cylinder(h=thickness,r=15,$fn=6);
+				for(i=[-4:1:2]){
+					translate ([0,i*30,-1]){
+						cylinder(h=thickness+2,r=15,$fn=6);
+						for(ra=[60,300]){
+							rotate(ra,[0,0,1]) translate ([0,30,0]) cylinder(h=thickness + 2,r=15,$fn=6);
+						}
+					}
 				}
 			}
-			translate ([w/2-3*thickness,-h/2,0]) cube([10,h,10]);
-			translate ([-w/2-10+3*thickness,-h/2,0]) cube([10,h,10]);
+			// Bounding space
+			translate ([0,-15,-1]) roundedppiped(w-16,120,10,3);
 		}
 	}
 }
